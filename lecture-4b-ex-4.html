@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ex 4</title>
+	<style>
+		.postContainer {
+			background-color: rgb(130, 255, 178);
+			padding: 15px;
+			margin: 10px;
+		}
+	</style>
+</head>
+<body>
+	
+	<p id="errorText" style="color:red"></p>
+
+	<form id="theForm">
+		<label for="name">Name</label><br>
+		<input type="text" id="name" name="name"><br>
+		<label for="post">Post</label><br>
+		<textarea name="post" id="post" cols="30" rows="10"></textarea><br>
+		<button type="submit">Post</button><br>
+	</form>
+
+	<div class="posts"></div>
+
+	<script>
+
+		const showPost = (e) => {
+			e.preventDefault();
+
+			let name = document.querySelector('#name'); 
+			let post = document.querySelector('#post');
+			
+			// basic validation
+			if (name.value.length === 0 && post.value.length === 0) {
+				document.querySelector('#errorText').innerHTML = 'Fields cannot be empty!';
+				return;
+			}
+			document.querySelector('#errorText').innerHTML = ''; 
+
+			const postId = new Date().getTime(); // create a basic unique id (demo only - not serious)
+			
+			const postContainer = document.createElement('div');
+			postContainer.classList.add('postContainer')
+			postContainer.id = postId;
+			postContainer.innerHTML = `<h3>${name.value}</h3><p>${post.value}</p><button class="remove-post">Remove</button>`;
+			document.querySelector('.posts').appendChild(postContainer);
+			
+			// reset fields
+			name.value = '';
+			post.value = '';
+			removePosts();
+		}; 
+		document.querySelector('#theForm').addEventListener('submit', showPost);
+
+		const removePosts = () => {
+			const removePost = document.querySelectorAll('.remove-post');
+			removePost.forEach( (el) => {
+				el.addEventListener('click', (event) => {
+					event.target.parentElement.remove();
+					// This isn't the best way because if a UI change occurs, this functionality might break. 
+					// A good method might me to add the id to the button too, but prefix with del_<the_id>, so they are not conflicting. Then remove the del_ part to get just the id. Then target the element you need to delete by id. But this serves as a visual demo for now. 
+				});
+			});
+		};
+
+	</script>
+</body>
+</html>

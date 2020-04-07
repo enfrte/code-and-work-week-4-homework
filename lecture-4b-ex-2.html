@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0; 
+			padding: 0;
+		}
+
+		.head {
+			height: 20%;
+			background-color: red;
+			margin: 0; 
+			padding: 0;
+		}
+		.main {
+			display: flex;
+			flex-wrap: nowrap;
+			height: 80%;
+		}
+		.left {
+			height: 100%;
+			width: 20%;
+			display: inline-block;
+			background-color: green;
+			margin: 0; 
+			padding: 0;
+		}
+		.right {
+			height: 100%;
+			width:80%;
+			display: inline-block;
+			background-color: blue;
+			margin: 0; 
+			padding: 0;
+		}
+
+		.bg-yellow {
+			background-color: 'yellow';
+		}
+		
+	</style>
+</head>
+<body>
+
+	<div class="head">Head</div>
+
+	<div class="main">
+		
+		<div class="left"><p>Left</p></div>
+	
+		<div class="right"><p>Right</p></div>
+
+	<script>
+		// ex 2 - It would be simpler to just make the elements a:links and set the hover attribute 
+		const head = document.querySelector('.head');
+		head.addEventListener('mouseover', () => {
+			if (head.style.backgroundColor !== 'yellow') {
+				head.style.backgroundColor = 'yellow';
+			}
+		});
+		head.addEventListener('mouseleave', () => {
+			if (head.style.backgroundColor === 'yellow') {
+				head.style.backgroundColor = 'red';
+			}
+		});
+			
+		const right = document.querySelector('.right'); 
+		right.addEventListener('mouseover', () => {
+			if (right.style.backgroundColor !== 'yellow') {
+				right.style.backgroundColor = 'yellow';
+			}
+		});
+		right.addEventListener('mouseleave', () => {
+			if (right.style.backgroundColor === 'yellow') {
+				right.style.backgroundColor = 'green';
+			}
+		});
+
+		const left = document.querySelector('.left');
+		left.addEventListener('mouseover', () => {
+			if (left.style.backgroundColor !== 'yellow') {
+				left.style.backgroundColor = 'yellow';
+			}
+		});
+		left.addEventListener('mouseleave', () => {
+			if (left.style.backgroundColor === 'yellow') {
+				left.style.backgroundColor = 'blue';
+			}
+		});
+
+	</script>
+</body>
+</html>
