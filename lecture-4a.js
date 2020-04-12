@@ -73,25 +73,3 @@ dogB.greet();
 dogB.greet();
 dogB.greet();
 dogB.greet();
-
-/*
-// Prototype example
-
-function Hero(name, level, lastWords){
-	this.name = name;
-	this.level = level;
-	this.lastWords = lastWords;
-}
-
-Hero.prototype.greet = function () {
-	return `${this.name} - ${this.level}`;
-}
-
-Hero.prototype.lastWords = function () {
-	return `${this.lastWords}`;
-}
-
-const player1 = new Hero('Noel', 8, 'Oh well');
-console.log(player1.greet());
-console.log(player1.lastWords());
-*/
