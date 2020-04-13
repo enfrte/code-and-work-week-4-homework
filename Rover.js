@@ -116,6 +116,7 @@ class Rover {
     console.log("Rover can't go out of the boundry!");
   }
 
+  // check coordinates for the map plot
   checkCoordinates(column, row) {
     let check = false;
     let currentPosition = false;
@@ -153,9 +154,9 @@ class Rover {
           logPoint += "-";
         }
       }
-      logPoint += "\n";       
+      logPoint += "\n"; // row has finished 
     }
-    console.log(logPoint);
+    console.log(logPoint); // logs the row
   }
 
 }
