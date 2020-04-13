@@ -116,6 +116,48 @@ class Rover {
     console.log("Rover can't go out of the boundry!");
   }
 
+  checkCoordinates(column, row) {
+    let check = false;
+    let currentPosition = false;
+    
+    this.travelLog.forEach( (value, index, array) => {
+      let x = array[index][0];
+      let y = array[index][1];
+
+      if (row === x && column === y) {
+        check = true;
+        // check if the rover is at its current/resting position
+        if (this.position.x === x && this.position.y === y ) {
+          currentPosition = true;
+        }
+      }
+    });
+    return {check: check, currentPosition: currentPosition};
+  }
+
+  printMap() {
+    let logPoint = '';
+    let count = 0;
+    
+    for (let column = 0; column < 10; column++) {
+      for (let row = 0; row < 10; row++) {
+        if (this.checkCoordinates(column, row).check === true) {
+          if (this.checkCoordinates(column, row).currentPosition === true) {
+            logPoint += "R";
+          }
+          else {
+            logPoint += "x";
+          }
+        }
+        else {
+          logPoint += "-";
+        }
+      }
+      logPoint += "\n";       
+    }
+    console.log(logPoint);
+  }
+
 }
 
 rover1 = new Rover('Rover One', 5, 0);
@@ -126,6 +168,7 @@ rover1.turnLeft();
 rover1.moveForward();
 rover1.printPosition();
 rover1.printLog();
+rover1.printMap();
 
 console.log("\nA new rover lands...\n");
 
@@ -134,13 +177,3 @@ rover1.turnRight();
 rover1.moveForward();
 rover1.turnLeft();
 rover1.moveForward();
-
-/*
-Checklist:
-  H4.1 
-  H4.2
-  H4.3 minus extra
-  H4.
-  H4.5
-  H4.
-*/ 
